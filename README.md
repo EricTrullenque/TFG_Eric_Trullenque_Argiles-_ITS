@@ -12,7 +12,7 @@ sense executar-lo.
 
 ---
 
-## ⭐ Com llegir aquest repositori (important per al tribunal)
+## ⭐ Com llegir aquest repositori
 
 El projecte es va desenvolupar **per etapes**. Els programes `Detectar_vectors` i
 `Dibuixar_Vectors` són els **passos previs de desenvolupament**: cadascun resol una part del

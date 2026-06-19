@@ -53,7 +53,7 @@ en temps real**: [`visio_udp_V3_V10_ncnn_n_26_256_Commentat - copia.py`](visio_u
 ## 🔧 Tecnologies utilitzades
 
 - **Python 3**
-- **YOLOv5 / Ultralytics YOLO** — detecció d'objectes (cotxes)
+- **YOLO26 / Ultralytics YOLO** — detecció d'objectes (cotxes)
 - **NCNN** — inferència optimitzada per a Raspberry Pi (versió final)
 - **OpenCV** — captura i tractament d'imatge
 - **NumPy** — càlcul de vectors i geometria

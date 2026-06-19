@@ -12,7 +12,7 @@ sense executar-lo.
 
 ---
 
-## ⭐ Com llegir aquest repositori
+## Com llegir aquest repositori
 
 El projecte es va desenvolupar **per etapes**. Els programes `Detectar_vectors` i
 `Dibuixar_Vectors` són els **passos previs de desenvolupament**: cadascun resol una part del
@@ -38,7 +38,7 @@ en temps real**: [`visio_udp_V3_V10_ncnn_n_26_256_Commentat - copia.py`](visio_u
 
 ---
 
-## 📂 Descripció dels fitxers
+## Descripció dels fitxers
 
 | Fitxer | Etapa | Què fa |
 |--------|-------|--------|
@@ -50,7 +50,7 @@ en temps real**: [`visio_udp_V3_V10_ncnn_n_26_256_Commentat - copia.py`](visio_u
 
 ---
 
-## 🔧 Tecnologies utilitzades
+## Tecnologies utilitzades
 
 - **Python 3**
 - **YOLO26 / Ultralytics YOLO** — detecció d'objectes (cotxes)
@@ -62,7 +62,7 @@ en temps real**: [`visio_udp_V3_V10_ncnn_n_26_256_Commentat - copia.py`](visio_u
 
 ---
 
-## ▶️ Flux d'execució del sistema final
+## Flux d'execució del sistema final
 
 1. **Calibratge** (un sol cop): `Dibuixar_pistes_V3.py` → genera `config_pistes.json`.
 2. **Visió en temps real**: `visio_udp_V3_V10_...py` → detecta, analitza i envia ordres per UDP.
@@ -74,7 +74,7 @@ en temps real**: [`visio_udp_V3_V10_ncnn_n_26_256_Commentat - copia.py`](visio_u
 
 ---
 
-## ℹ️ Notes
+## Notes
 
 - Els fitxers de model entrenat (`best.pt`, `*.ncnn`...), les imatges de sortida i els fitxers
   generats en execució **no** s'inclouen al repositori (vegeu [`.gitignore`](.gitignore)), ja que

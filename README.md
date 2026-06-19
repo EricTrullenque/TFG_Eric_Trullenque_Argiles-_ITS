@@ -47,6 +47,7 @@ en temps real**: [`visio_udp_V3_V10_ncnn_n_26_256.py`](visio_udp_V3_V10_ncnn_n_2
 | [`Dibuixar_Vectors_6.py`](Dibuixar_Vectors_6.py) | **Pas previ 2** | L'**analitzador de trajectòries**. Llegeix els `.txt` del detector i fa la "intel·ligència": seguiment (tracking) de cada cotxe amb ID estable, vector de predicció, detecció de col·lisions a les zones de perill i càlcul de la frenada (telemetria a CSV). |
 | [`visio_udp_V3_V10_ncnn_n_26_256.py`](visio_udp_V3_V10_ncnn_n_26_256.py) | **Programa final unificat** | Unifica tot l'anterior en **un sol programa en temps real**: captura la càmera, detecta (YOLO/NCNN optimitzat per a Raspberry Pi), fa tracking, prediu trajectòries, detecta col·lisions i **envia per UDP les ordres de velocitat** de cada pista. |
 | [`control_udp.py`](control_udp.py) | Pont de control | Node **ROS2** que fa de pont: escolta les ordres UDP que envia el programa de visió i les republica dins de ROS2 (`Int32MultiArray`), que és qui controla físicament els cotxes. |
+| [`Gestio_EscalextricV1.ino`](Gestio_EscalextricV1.ino) | Microcontrolador (firmware) | Firmware per a l'**ESP32-C3**. Node **micro-ROS** que es connecta per Wi-Fi a la Raspberry Pi, rep les ordres de velocitat per ROS2 (`vel_pista_escalextric`), genera el senyal **PWM** de cada una de les 4 pistes i publica l'estat actual. És l'últim baula: converteix les ordres de ROS2 en moviment real dels cotxes. |
 
 ---
 
@@ -58,6 +59,7 @@ en temps real**: [`visio_udp_V3_V10_ncnn_n_26_256.py`](visio_udp_V3_V10_ncnn_n_2
 - **OpenCV** — captura i tractament d'imatge
 - **NumPy** — càlcul de vectors i geometria
 - **ROS2** (`rclpy`) — control dels cotxes
+- **micro-ROS + C/Arduino (ESP32-C3)** — firmware del microcontrolador que mou les pistes (PWM)
 - **Sockets UDP** — comunicació entre el programa de visió i ROS2
 
 ---
@@ -66,7 +68,8 @@ en temps real**: [`visio_udp_V3_V10_ncnn_n_26_256.py`](visio_udp_V3_V10_ncnn_n_2
 
 1. **Calibratge** (un sol cop): `Dibuixar_pistes_V3.py` → genera `config_pistes.json`.
 2. **Visió en temps real**: `visio_udp_V3_V10_...py` → detecta, analitza i envia ordres per UDP.
-3. **Control**: `control_udp.py` (node ROS2) → rep les ordres i mou els cotxes.
+3. **Control (pont)**: `control_udp.py` (node ROS2) → rep les ordres UDP i les republica dins de ROS2.
+4. **Actuació**: `Gestio_EscalextricV1.ino` (ESP32-C3) → rep les ordres ROS2 per Wi-Fi i mou els cotxes via PWM.
 
 > Els programes `Detectar_vectors_4.py` i `Dibuixar_Vectors_6.py` **no** calen per al
 > funcionament final: són les etapes de desenvolupament que es van unificar dins de
